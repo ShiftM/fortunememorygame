@@ -1,0 +1,332 @@
+html {
+    height: 100%;
+    background-color: #1d292c;
+}
+body {
+    margin: 0;
+    max-height: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #1d292c;
+    font-family: Helvetica, arial, sans-serif;
+    position: relative;
+    width: 100%;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+#application-canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+#application-canvas.fill-mode-NONE {
+    margin: auto;
+}
+#application-canvas.fill-mode-KEEP_ASPECT {
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+#application-canvas.fill-mode-FILL_WINDOW {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+canvas:focus {
+    outline: none;
+}
+
+
+
+
+
+/* DEMO example styles for logo image */
+.navbar-brand {
+    padding: 0px;
+  }
+  
+  
+  /* Button used to open the chat form - fixed at the bottom of the page */
+  .open-button {
+    background: url(./game/assets/videobtn.png);
+    /* background-color: #555; */
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 1;
+    position: fixed;
+    bottom: 12px;
+    right: 15px;
+    width: 40px;
+    height: 40px
+  }
+  
+  .modal-content{
+    -webkit-box-shadow: 0px !important;
+    box-shadow: 0px !important;
+    border: 0px !important
+  }
+  
+  select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 5px;
+    border-radius: 20px !important; 
+    background-color: #0C9400 !important; 
+    border-color: #0A7500 !important; 
+    color: white !important; 
+  }
+  .navbar-brand>img {
+    height: 100%;
+    width: auto;
+    padding: 7px 14px;
+  }
+  .navbar {
+    margin-bottom: 0px !important;
+  }
+  .navbar-brand-img {
+    height: 100%;
+    width: auto;
+    padding: 7px 14px;
+  }
+  
+  .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+      background-color: transparent;
+  }
+  
+  .navbar-brand {
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+  }
+  
+  /* Add a black background color to the top navigation */
+  .topnav {
+      background-color: #333;
+      overflow: hidden;
+      z-index: 10;
+  
+    }
+    
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #14a114 !important;
+      opacity: 1; /* Firefox */
+    }
+    
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #14a114 !important;
+    }
+    
+    ::-ms-input-placeholder { /* Microsoft Edge */
+      color: #14a114 !important;
+    }
+  
+    /* Style the links inside the navigation bar */
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      width: 100%;
+    }
+    
+    /* Change the color of links on hover */
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    
+    /* Add a color to the active/current link */
+    .topnav a.active {
+      background-color: #12d419;
+      color: white;
+    }
+  
+  html {
+      height: 100%;
+      background-color: #0193b8;
+  }
+  
+  body {
+      background-color: #0193b8;
+  
+  }
+  
+  
+  
+  
+  .slideInRight {
+    animation-name: slideInRight;
+  }
+  .animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+  
+  .modal.show {
+    top: 0;
+    opacity: 1;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      transform: translate3d(100%, 0, 0);
+      visibility: visible;
+    }
+  
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  @keyframes slideInTop {
+    from {
+      transform: translate3d(0, 100%, 0);
+      visibility: visible;
+    }
+  
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .menuBar {
+    animation-name: slideInTop;
+    animation-duration: 4s;
+  }
+  
+  #overlay {
+      display: block;
+      width: 100%;
+      height: 100%;
+   
+      background-color: rgba(0,0,0,0.5);
+      z-index: 2;
+      /* cursor: pointer; */
+    }
+  
+    #text{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 50px;
+      color: white;
+      transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+    }
+  
+  
+    input {
+        border-radius: 20px !important; 
+        background-color: #0C9400 !important; 
+        border-color: #0A7500 !important; 
+        color: white !important; 
+    }
+  
+  
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: white !important;
+      opacity: 1; /* Firefox */
+    }
+    
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: white !important;
+    }
+    
+    ::-ms-input-placeholder { /* Microsoft Edge */
+      color: white !important;
+    }
+  
+    #bottom {
+      position: absolute !important;
+      bottom: 0 !important;
+      background-color: white !important;
+      /* background-image: url(./game/assets/submitbtn.png); */
+      width: 90%; 
+      height: 50px;
+      border-radius: 20rem ;
+      margin: 0;
+      left: 50%;
+      color: black !important;
+      /* transform: translate(-50%, -50%); */
+      transform: scale(2);
+      transition: all 0.6s ease-in;
+    }
+  
+  
+  
+    
+    /* // Small devices (landscape phones, 576px and up) */
+    @media (min-width: 200px) { 
+      #text{
+        width: 100%;
+        padding: 20px;
+      }
+  
+      #card-style {
+        width: 100% !important;
+      }
+    }
+  
+    /* // Medium devices (tablets, 768px and up) */
+    @media (min-width: 768px) { 
+      #text{
+        width: unset !important;
+      }
+      #card-style {
+        width: 30rem !important;
+      }
+      .modal-dialog {
+        /* width: 400px; */
+        width: 100%;
+      }
+      #modalreg {
+        /* width: 400px; */
+        padding-left: 30%;
+        padding-right: 30%;
+      }
+    }
+  
+    /* // Large devices (desktops, 992px and up) */
+    @media (min-width: 992px) { 
+      #text{
+        width: unset !important;
+      }
+      #card-style {
+        width: 30rem !important;
+      }
+    }
+  
+    /* // Extra large devices (large desktops, 1200px and up) */
+    @media (min-width: 1200px) { 
+  
+    }
+  
+  
+  /*           
+    .navbar-brand
+    {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        text-align: center;
+        margin:0 auto;
+    } */
+    .navbar-toggle {
+        z-index:3;
+    }
+
+
+
+
+    
+  

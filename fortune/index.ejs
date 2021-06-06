@@ -1,0 +1,232 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <!-- <link rel="manifest" href="site.webmanifest"> -->
+  <!-- <link rel="apple-touch-icon" href="icon.png"> -->
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  
+</head>
+<script>
+    //////////////// USER DATA ////////////////
+  let ContactId = '<%-ContactId%>';
+
+  let userProgress = '<%-userProgress%>'; 
+  let userStars = '<%-userStars%>'; 
+
+
+  localStorage.setItem("playerLevel", JSON.parse("[" + userProgress + "]"));
+  localStorage.setItem("userStars", userStars);
+
+  </script>
+
+  <script type="text/javascript" src="../fortune/script.js"></script>
+<style>
+  
+#navbar {
+  overflow: hidden;
+  background-color: #1170b0;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#navbar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.navbarsolid {
+  background-color: #4d2e25 !important;
+  transition: all 1s;
+}
+
+.navbarsolidpinnacle {
+  background-color: #e2c3b9 !important;
+  transition: all 1s;
+}
+
+.logos {
+  height:20px !important;
+  user-drag: none; 
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+@viewport {
+    width: device-width ;
+    zoom: 1.0 ;
+    } 
+
+    
+    /* // Small devices (landscape phones, 576px and up) */
+    @media (min-width: 576px) { 
+        .modalbg {
+            height:950px !important;
+        }
+        .modalbg {
+          height:550px !important;
+      }
+        .logos {
+          height:25px !important;
+        }
+        #search-input-bar {
+          display: none;
+        }
+        /* #assistantLabel {
+          display: none;
+        } */
+
+        .stickyBottom {
+          height: 100px;
+        }
+
+
+    }
+
+    /* // Medium devices (tablets, 768px and up) */
+    @media (min-width: 768px) { 
+        .mainrow {
+            /* height:100%; */
+            height:500px !important;
+
+        }
+        .stickyBottom {
+          height: 100px;
+        }
+        
+        .modal-content {
+          height:650px ;
+      }
+        .modalbg {
+            height:550px !important;
+        }
+        .logos {
+          height:25px !important;
+        }
+        .card-carousel {
+          margin-top: -60px;
+        }
+        #search-input-bar {
+          display: none;
+        }
+        /* #assistantLabel {
+          display: none;
+        } */
+        .sticky {
+          position: fixed;
+        }
+
+        .modalCustom {
+          width: 700px;
+        }
+ 
+    }
+
+    /* // Large devices (desktops, 992px and up) */
+    @media (min-width: 992px) { 
+        .modal-content {
+            height:650px ;
+        }
+        .modalbg {
+            height:550px !important;
+        }
+        .logos {
+          height:40px !important;
+        }
+        .card-carousel {
+          margin-top: -240px;
+        }
+        #search-input-bar {
+          display: block;
+        }
+        #assistantLabel {
+          display: block;
+        }
+        .stickyBottom {
+          height: auto;
+        }
+        .sticky {
+          position: fixed;
+        }
+        .modalCustom {
+          width: 700px;
+        }
+    }
+
+    /* // Extra large devices (large desktops, 1200px and up) */
+    @media (min-width: 1200px) { 
+        .modalbg {
+            height:550px !important;
+        }
+        .card-carousel {
+          margin-top: -240px;
+        }
+        #search-input-bar {
+          display: block;
+        }
+        #assistantLabel {
+          display: block;
+        }
+        .sticky {
+          position: fixed !important;
+        }
+        .modalCustom {
+          width: 700px;
+        }
+    }
+
+
+</style>
+<body style="overflow-x:hidden !important;"  >
+
+
+  <div class="tab-content body-contents" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    
+
+      <iframe sandbox='allow-same-origin allow-scripts allow-popups allow-forms' src="/gamefortune/index.html"   style=" padding: 0px; width:100%; height: 630px;  border: none" webkitallowfullscreen="true" scrolling="no" mozallowfullscreen="true" allow="autoplay" allowfullscreen="true" allowvr="" scrolling="no" frameborder="0"></iframe>
+
+    </div>
+  </div>
+
+  </div>
+</body>
+
+</html>
