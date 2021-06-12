@@ -99,8 +99,8 @@ app.get('/', function (request, response) {
 				}
 			})
 		} else {
-			console.log('user not valid/available')
-			response.status(200);
+			response.set('Content-Type', 'text/html');
+			response.send(Buffer.from('<label>user not valid/available.</label>'));
 		}
 
 	}).catch(err => {
@@ -147,9 +147,8 @@ app.post('/saveProgress', function (request, response) {
 
 	// if (authenticateToken(request)) {
 
-	if (request.body.userId && request.body.userProgress && request.body.userStars) {
+	if (request.body.userId && request.body.userStars && request.body.points && request.body.level) {
 
-		var progress = request.body.userProgress;
 
 		// SAVE CURRENT TIME
 		var d = new Date();
@@ -158,35 +157,43 @@ app.post('/saveProgress', function (request, response) {
 		var currentTime = Math.round(d); // next midnight
 		var nextMidnight = Math.round(d.setHours(24, 0, 0, 0)); // next midnight
 
-		var array = JSON.parse('[' + progress + ']')
-
+		// console.log(array)
 
 		var databaseId = 0;
 		connection.query('SELECT * FROM user_fortune_generic WHERE userToken = ?', [request.body.userId], function (error, results, fields) {
-			// SUCCESS
-			var levelCompletedId; // FOR LOGGING
+
+
 			// GET USER ID
 			if (results.length > 0) {
-				databaseId = results[0].id;
-				for (var i = 0; i < array.length; i++) {
-					if (array[i] > 1000) {
-						// GET CURRENT TIME
-						array[i] = currentTime;
-						var sql = "UPDATE user_generic SET nextUnlock = ? WHERE id = ?";
-						connection.query(sql, [nextMidnight, databaseId], function (err, result) {
-							if (err) throw err;
-						});
+				// SUCCESS
+				var levelCompletedId; // FOR LOGGING
 
-						levelCompletedId = i - 1;
-					}
-				}
+				var progress = JSON.parse(results[0].userProgress);
+				databaseId = results[0].id;
+				// for (var i = 0; i < array.length; i++) {
+				// 	if (array[i] > 1000) {
+				// 		// GET CURRENT TIME
+				// 		array[i] = currentTime;
+				// 		var sql = "UPDATE user_generic SET nextUnlock = ? WHERE id = ?";
+				// 		connection.query(sql, [nextMidnight, databaseId], function (err, result) {
+				// 			if (err) throw err;
+				// 		});
+
+				// 		levelCompletedId = i - 1;
+				// 	}
+				// }
+				// console.log (progress)
+
+				progress[parseInt(request.body.level)-1] = parseInt(request.body.points)
+				progress[parseInt(request.body.level)] = 0
 
 				// Add Coins
 				let payload = {
 					complete_level: request.body.level,
-					coins_amount: request.body.level == 7 ? 20 : 10,
+					coins_amount: request.body.level-1 == 7 ? 20 : 10,
 					token: request.body.userId
 				}
+
 				user.addCoinGame(payload).then((res) => {
 					response.status(200).send(res.status)
 				}).catch((err) => {
@@ -195,15 +202,16 @@ app.post('/saveProgress', function (request, response) {
 
 				// UPDATE PROGRESS
 				var sql = "UPDATE user_fortune_generic SET userProgress = ?, userStars = ? WHERE id = ?";
-				connection.query(sql, ['[' + array + ']', request.body.userStars, databaseId], function (err, result) {
+				connection.query(sql, ['[' + progress + ']', request.body.userStars, databaseId], function (err, result) {
 					// console.log(result)
 					if (err) throw err;
 				});
 			}
 			if (error) throw error;
 		});
+	} else {
+		response.status(500).send('invalid request');
 	}
-	response.status(200);
 	// } else {
 	// 	response.json({ 
 	// 		error: 'INVALID TOKEN', 
