@@ -190,7 +190,7 @@ app.post('/saveProgress', function (request, response) {
 				// Add Coins
 				let payload = {
 					complete_level: request.body.level,
-					coins_amount: request.body.level-1 == 7 ? 20 : 10,
+					coins_amount: request.body.level == 8 ? 20 : 10,
 					token: request.body.userId
 				}
 

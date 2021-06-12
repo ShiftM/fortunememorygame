@@ -39,7 +39,7 @@ function addCoinGame(payload) {
     let ref = Date.now()
     let apiRequest = {
         "reference_no": ref,
-        "complete_level": parseInt(payload.complete_level)-1,
+        "complete_level": (parseInt(payload.complete_level)).toString(),
         "completed_time": time.getServerTime(),
         "securehash": generateHash({
             reference_no: ref, 
