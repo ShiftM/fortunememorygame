@@ -39,7 +39,7 @@ function addCoinGame(payload) {
     let ref = Date.now()
     let apiRequest = {
         "reference_no": ref,
-        "complete_level": (parseInt(payload.complete_level)).toString(),
+        "complete_level": payload.complete_level.toString(),
         "completed_time": time.getServerTime(),
         "securehash": generateHash({
             reference_no: ref, 
@@ -53,7 +53,6 @@ function addCoinGame(payload) {
         }
     }
     console.log(apiRequest)
-
     return new Promise((resolve, reject) => {
         axios.post(FORTUNE_API_HOST + ADDCOINGAME, apiRequest, apiHeader)
             .then(res = (e) => {
