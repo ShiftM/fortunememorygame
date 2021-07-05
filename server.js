@@ -197,7 +197,8 @@ app.post('/saveProgress', function (request, response) {
 				user.addCoinGame(payload).then((res) => {
 					response.status(200).send(res.status)
 				}).catch((err) => {
-					response.status(500).send(err.status);
+					console.log(err)
+					// response.status(500).send(err.status);
 				})
 
 				// UPDATE PROGRESS

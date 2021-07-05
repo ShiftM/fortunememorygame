@@ -52,7 +52,6 @@ function addCoinGame(payload) {
             'Authorization': 'Bearer ' + payload.token,
         }
     }
-    console.log(apiRequest)
     return new Promise((resolve, reject) => {
         axios.post(FORTUNE_API_HOST + ADDCOINGAME, apiRequest, apiHeader)
             .then(res = (e) => {
@@ -61,6 +60,8 @@ function addCoinGame(payload) {
                 // 	if(error) throw error;
                 // 	console.log("Successfully created log");  
                 // });
+                console.log('RESPONSE ' + JSON.stringify(e))
+
                 resolve(e.data)
             })
             .catch(error = (e) => {
