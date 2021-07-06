@@ -19,6 +19,8 @@ function checkUserGame(token) {
             'Authorization': 'Bearer ' + token,
         }
     }
+
+    console.log('TOKEN ' + token)
     return new Promise((resolve, reject) => {
         axios.post(FORTUNE_API_HOST + CHECKUSERGAME, '', apiHeader)
             .then(res = (val) => {
