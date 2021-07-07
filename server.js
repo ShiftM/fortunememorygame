@@ -56,58 +56,58 @@ app.get('/', function (request, response) {
 	try {
 		var safeBase64 = iframedata.replace(/%2F/g, '/').replace(/%2B/g, '+').replace(/%3D/g, '=');
 	} catch (e) {
-			response.set('Content-Type', 'text/html');
-			response.send(Buffer.from('<h2>Invalid URL: Query Missing or Not Formatted Correctly</h2><label>Refer to the documentation for more information</label>'));
+		response.set('Content-Type', 'text/html');
+		response.send(Buffer.from('<h2>Invalid URL: Query Missing or Not Formatted Correctly</h2><label>Refer to the documentation for more information</label>'));
 	}
 
-	// Check user
-	user.checkUserGame(safeBase64).then(res => {
-		let ContactId = res;
-		let userProgress = "[0,10,10,10,10,10,10,10,0]";
-		let userStars = 0;
-		if (ContactId) {
-			// console.log(data.ContactId)
-			connection.query('SELECT * FROM user_fortune_generic WHERE userId = ?', [ContactId], function (error, results, fields) {
-				if (results.length > 0) {
-					userProgress = results[0].userProgress;
-					userStars = results[0].userStars;
+	// // Check user
+	// user.checkUserGame(safeBase64).then(res => {
+	// 	let ContactId = res;
+	// 	let userProgress = "[0,10,10,10,10,10,10,10,0]";
+	// 	let userStars = 0;
+	// 	if (ContactId) {
+	// 		// console.log(data.ContactId)
+	// 		connection.query('SELECT * FROM user_fortune_generic WHERE userId = ?', [ContactId], function (error, results, fields) {
+	// 			if (results.length > 0) {
+	// 				userProgress = results[0].userProgress;
+	// 				userStars = results[0].userStars;
 
-					var sql = "UPDATE user_fortune_generic SET lastLogin = ?, userToken = ? WHERE userId = ?";
-					connection.query(sql, [time.getServerTime(), safeBase64, ContactId], function (err, result) {
-						if (err) throw err;
-					});
+	// 				var sql = "UPDATE user_fortune_generic SET lastLogin = ?, userToken = ? WHERE userId = ?";
+	// 				connection.query(sql, [time.getServerTime(), safeBase64, ContactId], function (err, result) {
+	// 					if (err) throw err;
+	// 				});
 
-					var json = {
-						ContactId: safeBase64,
-						userProgress: userProgress,
-						userStars: userStars,
-					}
+	// 				var json = {
+	// 					ContactId: safeBase64,
+	// 					userProgress: userProgress,
+	// 					userStars: userStars,
+	// 				}
 
-					response.render('../fortune/index', json);
-				} else {
-					// INSERT TO MYSQL
-					connection.query('INSERT INTO user_fortune_generic (userId, userProgress, userStars, dateCreated, lastLogin, userToken ) VALUES (?,?,?,?,?,?)', [ContactId, userProgress, userStars, time.getServerTime(), time.getServerTime(), safeBase64], function (error, results, fields) {
-						if (error) throw error;
-						console.log("Successfully created user with ID: " + ContactId);
-						var json = {
-							ContactId: safeBase64,
-							userProgress: userProgress,
-							userStars: userStars,
-						}
-						response.render('../fortune/index', json);
-					});
-				}
-			})
-		} else {
-			response.set('Content-Type', 'text/html');
-			response.send(Buffer.from('<label>user not valid/available.</label>'));
-		}
+	// 				response.render('../fortune/index', json);
+	// 			} else {
+	// 				// INSERT TO MYSQL
+	// 				connection.query('INSERT INTO user_fortune_generic (userId, userProgress, userStars, dateCreated, lastLogin, userToken ) VALUES (?,?,?,?,?,?)', [ContactId, userProgress, userStars, time.getServerTime(), time.getServerTime(), safeBase64], function (error, results, fields) {
+	// 					if (error) throw error;
+	// 					console.log("Successfully created user with ID: " + ContactId);
+	// 					var json = {
+	// 						ContactId: safeBase64,
+	// 						userProgress: userProgress,
+	// 						userStars: userStars,
+	// 					}
+	// 					response.render('../fortune/index', json);
+	// 				});
+	// 			}
+	// 		})
+	// 	} else {
+	// 		response.set('Content-Type', 'text/html');
+	// 		response.send(Buffer.from('<label>user not valid/available.</label>'));
+	// 	}
 
-	}).catch(err => {
-		// console.log(err)
-		response.set('Content-Type', 'text/html');
-		response.send(Buffer.from('<h2>' + err + '</h2><label>You are not authorized to access this content.</label>'));
-	})
+	// }).catch(err => {
+	// 	// console.log(err)
+	// 	response.set('Content-Type', 'text/html');
+	// 	response.send(Buffer.from('<h2>' + err + '</h2><label>You are not authorized to access this content.</label>'));
+	// })
 
 });
 
@@ -185,7 +185,7 @@ app.post('/saveProgress', function (request, response) {
 				// }
 				// console.log (progress)
 
-				progress[parseInt(request.body.level)-1] = parseInt(request.body.points)
+				progress[parseInt(request.body.level) - 1] = parseInt(request.body.points)
 				progress[parseInt(request.body.level)] = 0
 
 				// Add Coins
