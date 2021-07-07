@@ -52,13 +52,14 @@ app.set('view engine', 'ejs');
 
 app.get('/', function (request, response) {
 
-	let iframedata = request.query.QUERY;
-	try {
-		var safeBase64 = iframedata.replace(/%2F/g, '/').replace(/%2B/g, '+').replace(/%3D/g, '=');
-	} catch (e) {
-		response.set('Content-Type', 'text/html');
-		response.send(Buffer.from('<h2>Invalid URL: Query Missing or Not Formatted Correctly</h2><label>Refer to the documentation for more information</label>'));
-	}
+	console.log('HELOOOOOOO')
+	// let iframedata = request.query.QUERY;
+	// try {
+	// 	var safeBase64 = iframedata.replace(/%2F/g, '/').replace(/%2B/g, '+').replace(/%3D/g, '=');
+	// } catch (e) {
+	// 	response.set('Content-Type', 'text/html');
+	// 	response.send(Buffer.from('<h2>Invalid URL: Query Missing or Not Formatted Correctly</h2><label>Refer to the documentation for more information</label>'));
+	// }
 
 	// // Check user
 	// user.checkUserGame(safeBase64).then(res => {
