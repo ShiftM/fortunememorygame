@@ -104,7 +104,6 @@ app.get('/', function (request, response) {
 		}
 
 	}).catch(err => {
-		response.set('Content-Type', 'text/html');
 		response.send(Buffer.from('<h2>' + err + '</h2><label>You are not authorized to access this content.</label>'));
 	})
 
