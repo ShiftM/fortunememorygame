@@ -58,6 +58,7 @@ app.get('/', function (request, response) {
 	} catch (e) {
 			response.set('Content-Type', 'text/html');
 			response.send(Buffer.from('<h2>Invalid URL: Query Missing or Not Formatted Correctly</h2><label>Refer to the documentation for more information</label>'));
+			return;
 	}
 
 	// Check user
@@ -101,12 +102,14 @@ app.get('/', function (request, response) {
 		} else {
 			response.set('Content-Type', 'text/html');
 			response.send(Buffer.from('<label>user not valid/available.</label>'));
+			return;
 		}
 
 	}).catch(err => {
 		// console.log(err)
 		response.set('Content-Type', 'text/html');
 		response.send(Buffer.from('<h2>' + err + '</h2><label>You are not authorized to access this content.</label>'));
+		return;
 	})
 
 });
