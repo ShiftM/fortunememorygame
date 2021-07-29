@@ -51,3 +51,12 @@ Open `.env` to edit the application end points.
 ## Simple build for production
 
     $ npm build
+
+
+
+
+## Embed Iframe sample
+        <iframe sandbox='allow-same-origin allow-scripts allow-popups allow-forms' src="LOCALHOST_URL_WITH_QUERY"
+        style=" padding: 0px; width:100%; height: 630px;  border: none" webkitallowfullscreen="true" scrolling="no"
+        mozallowfullscreen="true" allow="autoplay" allowfullscreen="true" allowvr="" scrolling="no"
+        frameborder="0"></iframe>
