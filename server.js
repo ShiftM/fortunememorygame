@@ -160,7 +160,7 @@ app.post('/saveProgress', function (request, response) {
 		d.setUTCHours(d.getUTCHours() + 8);
 
 		var currentTime = Math.round(d); // next midnight
-		var nextMidnight = Math.round(d.setHours(24, 0, 0, 0)); // next midnight
+		var nextMidnight = Math.round(d.setHours(168, 0, 0, 0)); // next midnight
 
 		// console.log(array)
 
@@ -175,22 +175,22 @@ app.post('/saveProgress', function (request, response) {
 
 				var progress = JSON.parse(results[0].userProgress);
 				databaseId = results[0].id;
-				// for (var i = 0; i < array.length; i++) {
-				// 	if (array[i] > 1000) {
-				// 		// GET CURRENT TIME
-				// 		array[i] = currentTime;
-				// 		var sql = "UPDATE user_generic SET nextUnlock = ? WHERE id = ?";
-				// 		connection.query(sql, [nextMidnight, databaseId], function (err, result) {
-				// 			if (err) throw err;
-				// 		});
 
-				// 		levelCompletedId = i - 1;
-				// 	}
-				// }
-				// console.log (progress)
+
+				for (var i = 0; i < progress.length; i++) {
+					if (progress[i] > 1000) {
+						progress[i] = currentTime;
+						var sql = "UPDATE user_generic SET nextUnlock = ? WHERE id = ?";
+						connection.query(sql, [nextMidnight, databaseId], function (err, result) {
+							if (err) throw err;
+						});
+
+						levelCompletedId = i - 1;
+					}
+				}
 
 				progress[parseInt(request.body.level)-1] = parseInt(request.body.points)
-				progress[parseInt(request.body.level)] = 0
+				progress[parseInt(request.body.level)] = nextMidnight
 
 				// Add Coins
 				let payload = {
@@ -271,7 +271,7 @@ app.use(function (req, res, next) {
 	} else {
 
 		// request was via http, so redirect to https
-		res.redirect('https://' + req.headers.host + req.url);
+		// res.redirect('https://' + req.headers.host + req.url);
 	}
 });
 
