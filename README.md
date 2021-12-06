@@ -54,7 +54,7 @@ Open `.env` to edit the application end points.
 
 
 
-## UPDAED EMBED 
+## UPDATED EMBED 
     <div style="height: 100%;width: 100%; display: flex; justify-content: center;">
       <iframe sandbox='allow-same-origin allow-scripts allow-popups allow-forms' src="LOCALHOST_URL_WITH_QUERY"
         style="max-width: 550px; padding: 0px; width:100%; height: 100%;  border: none" webkitallowfullscreen="true" scrolling="no"
